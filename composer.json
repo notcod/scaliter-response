@@ -1,0 +1,11 @@
+{
+    "name": "scaliter/response",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Scaliter\\": "src/"
+        }
+    },
+    "require": {},
+    "license": "MIT"
+}
