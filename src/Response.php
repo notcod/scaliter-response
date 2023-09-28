@@ -74,4 +74,17 @@ class Response extends \Exception
     {
         header("Location: $url");
     }
+    public static function json_table_response($json, $fetch, $res = [])
+    {
+        // public $USER = null, $page = 1, $limit = 10, $clock = 'h23', $list = [];
+
+        $res['list']       = $json->list ?? [];
+        $res['results']    = (int)($fetch->count());
+        $res['page']       = (int)($json->page ?? 1);
+        $res['page']       = $res['page'] < 1 ? 1 : $res['page'];
+        $res['limit']      = (int)($json->limit ?? 10);
+        $res['pagination'] = (int)(ceil($res['results'] / $res['limit']));
+        $res['start']      = (int)(($res['page'] - 1) * $res['limit'] + 1);
+        return $res;
+    }
 }
